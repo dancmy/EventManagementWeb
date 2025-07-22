@@ -1,0 +1,66 @@
+<!--OWN CODE-->
+<!--This template renders the organiser settings page, allowing the organiser to select an event and update its site name and description.
+Demonstrates server-side templating, form handling, and dynamic data population-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Settings</title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <nav class="organiser-navbar">
+    <div class="left">
+      <a href="/organiser/home">EventPilot</a>
+    </div>
+    <div class="right">
+      <a href="/organiser/create">Create Event</a>
+      <a href="/organiser/settings">Settings</a>
+      <a href="/organiser/bookings-all">All Bookings</a>
+      <a href="/organiser/logout">Logout</a>
+    </div>
+  </nav>
+  <div class="organiser-settings-container">
+    <h1>Site Settings</h1>
+    <form id="settingsForm" action="/organiser/settings" method="POST">
+      <p>Select Event:<br>
+        <select name="event_id" required>
+          <% events.forEach(event => { %>
+            <option value="<%= event.event_id %>" <%= settings.event_id === event.event_id ? 'selected' : '' %>><%= event.title %></option>
+          <% }); %>
+        </select>
+      </p>
+      <p>Site Name:<br>
+        <input type="text" name="site_name" value="<%= settings.site_name || '' %>" required />
+      </p>
+      <p>Site Description:<br>
+        <textarea name="site_description" rows="3" required><%= settings.site_description || '' %></textarea>
+      </p>
+      <button type="submit">Create</button>
+    </form>
+    <p><a href="/organiser/home">← Back to Dashboard</a></p>
+  </div>
+
+  <!-- Settings Confirmed Modal -->
+  <div id="settingsModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Settings confirmed</h2>
+      <button id="closeSettingsModal" class="modal-btn">Okay</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById('settingsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('settingsModal').style.display = 'flex';
+    });
+    document.getElementById('closeSettingsModal').onclick = function() {
+      document.getElementById('settingsModal').style.display = 'none';
+      document.getElementById('settingsForm').submit();
+    };
+  </script>
+</body>
+</html>
+<!--END OF OWN CODE-->

@@ -1,0 +1,101 @@
+<!--OWN CODE-->
+<!--This template displays all bookings for a specific event, listing attendee names and ticket quantities, with an option to delete bookings.
+Demonstrates server-side templating, dynamic data rendering, and form handling-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookings for <%= event.title %></title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+
+  <nav class="organiser-navbar">
+    <div class="left">
+      <a href="/organiser/home">EventPilot</a>
+    </div>
+    <div class="right">
+      <a href="/organiser/create">Create Event</a>
+      <a href="/organiser/settings">Settings</a>
+      <a href="/organiser/bookings-all">All Bookings</a>
+      <a href="/organiser/logout">Logout</a>
+    </div>
+  </nav>
+
+  <div class="organiser-bookings-container">
+    <h1>Bookings: <%= event.title %></h1>
+    <p>Date: <%= event.date %></p>
+    <hr/>
+    <% if (!bookings || bookings.length === 0) { %>
+      <p>No one has booked yet.</p>
+    <% } else { %>
+      <table class="modern-table">
+
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Full</th>
+            <th>Concession</th>
+            <th>VIP</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% bookings.forEach(b => { %>
+            <tr>
+              <td><%= b.attendee_name %></td>
+              <td><%= b.full_qty %></td>
+              <td><%= b.concession_qty %></td>
+              <td><%= b.vip_qty %></td>
+              <td><%= b.full_qty + b.concession_qty + b.vip_qty %></td>
+              <td>
+                <button type="button" class="remove-booking-btn remove-btn" data-booking-id="<%= b.booking_id %>">Remove</button>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+
+      </table>
+    <% } %>
+    <p><a href="/organiser/home">← Back to Dashboard</a></p>
+  </div>
+
+  <!-- Remove Booking Modal -->
+  <div id="removeBookingModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Remove this booking?</h2>
+      <div class="modal-actions">
+        <form id="removeBookingForm" method="POST">
+          <button type="submit" class="modal-btn">Yes</button>
+        </form>
+        <button type="button" id="cancelRemoveBooking" class="modal-btn modal-btn-cancel">No</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.querySelectorAll('.remove-booking-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const bookingId = this.getAttribute('data-booking-id');
+        const modal = document.getElementById('removeBookingModal');
+        const form = document.getElementById('removeBookingForm');
+        form.action = `/organiser/bookings/${bookingId}/delete`;
+        modal.style.display = 'flex';
+      });
+    });
+    document.getElementById('cancelRemoveBooking').onclick = function() {
+      document.getElementById('removeBookingModal').style.display = 'none';
+    };
+    document.getElementById('removeBookingModal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
+
+<!--END OF OWN CODE-->

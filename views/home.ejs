@@ -1,0 +1,30 @@
+<!--OWN CODE-->
+<!--This template renders the main home page, displaying the site name/description and links to organiser and attendee views.
+Demonstrates server-side templating and separation of concerns-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= settings && settings.site_name ? settings.site_name : "Event Manager" %></title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body class="home-bg">
+  <div class="home-container">
+    <h1><%= settings && settings.site_name ? settings.site_name : "EventPilot" %></h1>
+
+    <% if (settings && settings.site_description) { %>
+      <p><%= settings.site_description %></p>
+    <% } else { %>
+      <p>Welcome! Please choose your view:</p>
+    <% } %>
+
+    <ul>
+      <li><a href="/organiser/home">Organiser View</a></li>
+      <li><a href="/attendee/home">Attendee View</a></li>
+    </ul>
+
+  </div>
+</body>
+</html>
+<!--END OF OWN CODE-->

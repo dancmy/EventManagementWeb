@@ -1,0 +1,78 @@
+<!--OWN CODE-->
+<!--This template renders the attendee event page, displaying event details and a booking form for different ticket types.
+Demonstrates server-side templating, form handling, and dynamic data rendering-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= event.title %> – Booking</title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <div class="attendee-event-container">
+    <h1><%= event.title %></h1>
+    <p><strong>Date:</strong> <%= event.date %></p>
+    <p><strong>Description:</strong> <%= event.description %></p>
+
+    <h2>Available Tickets</h2>
+    <ul>
+      <li>Full: <%= event.full_price_tickets %> @ $<%= event.full_price %></li>
+      <li>Concession: <%= event.concession_tickets %> @ $<%= event.concession_price %></li>
+      <li>VIP: <%= event.vip_tickets %> @ $<%= event.vip_price %></li>
+    </ul>
+
+    <h2>Book Your Tickets</h2>
+    <form action="/attendee/event/<%= event.event_id %>/book" method="POST">
+      <p>Your Name: <input type="text" name="attendee_name" required /></p>
+
+      <p>Full-price tickets: 
+        <input type="number" name="full_qty" value="0" min="0" max="<%= event.full_price_tickets %>" />
+      </p>
+
+      <p>Concession-price tickets: 
+        <input type="number" name="concession_qty" value="0" min="0" max="<%= event.concession_tickets %>" />
+      </p>
+
+      <p>VIP tickets: 
+        <input type="number" name="vip_qty" value="0" min="0" max="<%= event.vip_tickets %>" />
+      </p>
+
+      <button type="submit" id="bookNowBtn" class="book-now-btn remove-btn">Book Now</button>
+    </form>
+
+    <div id="bookingConfirmedModal" class="modal-overlay">
+      <div class="modal-content-blue">
+        <h2>Booking confirmed!</h2>
+        <div class="modal-actions">
+          <button type="button" id="confirmBookingOkayBtn" class="modal-btn">Okay</button>
+        </div>
+      </div>
+    </div>
+
+    <p><a href="/attendee/home">← Back to Events</a></p>
+  </div>
+
+  <script>
+    const form = document.querySelector('form');
+    const bookNowBtn = document.getElementById('bookNowBtn');
+    const modal = document.getElementById('bookingConfirmedModal');
+    const okayBtn = document.getElementById('confirmBookingOkayBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+    okayBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+      form.submit();
+    });
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
+<!--END OF OWN CODE-->

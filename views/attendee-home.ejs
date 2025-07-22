@@ -1,0 +1,51 @@
+<!--OWN CODE-->
+<!--This template renders the attendee home page, listing all published events with their details and a link to view/book each event.
+Demonstrates server-side templating, dynamic data rendering, and separation of concerns-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events</title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <a href="/" class="sticky-home-btn">Home</a>
+  <div class="attendee-home-container">
+
+    <header>
+      <h1>Event Manager</h1>
+    </header>
+
+    <hr/>
+    <h2>Available Events</h2>
+    <% if (!events || events.length === 0) { %>
+      <p>No events are published yet.</p>
+    <% } else { %>
+      <ul>
+        <% events.forEach(event => { %>
+          <li class="attendee-event-box">
+            <strong>Title:</strong> <%= event.title %><br/>
+            <strong>Event Date:</strong> <%= event.date %><br/>
+            <% if (event.site_name || event.site_description) { %>
+              <em><%= event.site_name %></em><br/>
+              <small><%= event.site_description %></small><br/>
+            <% } %>
+
+            <ul>
+              <li>Full: <%= event.full_price_tickets %> @ $<%= event.full_price %></li>
+              <li>Concession: <%= event.concession_tickets %> @ $<%= event.concession_price %></li>
+              <li>VIP: <%= event.vip_tickets %> @ $<%= event.vip_price %></li>
+            </ul>
+
+            <a href="/attendee/event/<%= event.event_id %>">View &amp; Book</a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </div>
+</body>
+</html>
+<!--END OF OWN CODE-->

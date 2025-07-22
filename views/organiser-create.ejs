@@ -1,0 +1,57 @@
+<!--OWN CODE-->
+<!--This template renders the organiser event creation page, providing a form to input new event details and ticket types.
+Demonstrates server-side templating and form handling-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Event</title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <nav class="organiser-navbar">
+    <div class="left">
+      <a href="/organiser/home">EventPilot</a>
+    </div>
+    <div class="right">
+      <a href="/organiser/create">Create Event</a>
+      <a href="/organiser/settings">Settings</a>
+      <a href="/organiser/bookings-all">All Bookings</a>
+      <a href="/organiser/logout">Logout</a>
+    </div>
+  </nav>
+  <div class="organiser-create-container">
+    <h1>Create New Event</h1>
+    <form action="/organiser/create" method="post">
+      <label for="title">Title:</label>
+      <input type="text" name="title" required />
+      <label for="description">Description:</label>
+      <textarea name="description"></textarea>
+      <label for="date">Date:</label>
+      <input type="date" name="date" required />
+      <h3>Full-Price Tickets</h3>
+      <label for="full_price_tickets">Quantity:</label>
+      <input type="number" name="full_price_tickets" min="0" max="5000" required />
+      <label for="full_price">Price:</label>
+      <input type="number" name="full_price" step="0.01" min="0" max="5000" required />
+      <h3>Concession Tickets</h3>
+      <label for="concession_tickets">Quantity:</label>
+      <input type="number" name="concession_tickets" min="0" max="5000" required />
+      <label for="concession_price">Price:</label>
+      <input type="number" name="concession_price" step="0.01" min="0" max="5000" required />
+      <h3>VIP Tickets</h3>
+      <label for="vip_tickets">Quantity:</label>
+      <input type="number" name="vip_tickets" min="0" max="5000" required />
+      <label for="vip_price">Price:</label>
+      <input type="number" name="vip_price" step="0.01" min="0" max="5000" required />
+      <button type="submit">Create</button>
+    </form>
+    <p><a href="/organiser/home">← Back to Dashboard</a></p>
+  </div>
+</body>
+
+</html>
+<!--END OF OWN CODE-->

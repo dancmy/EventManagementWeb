@@ -1,0 +1,66 @@
+<!--OWN CODE-->
+<!--This template displays all bookings across all events for the organiser, showing attendee and event details.
+Demonstrates server-side templating and dynamic data rendering-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Bookings</title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <nav class="organiser-navbar">
+    <div class="left">
+      <a href="/organiser/home">EventPilot</a>
+    </div>
+    <div class="right">
+      <a href="/organiser/create">Create Event</a>
+      <a href="/organiser/settings">Settings</a>
+      <a href="/organiser/bookings-all">All Bookings</a>
+      <a href="/organiser/logout">Logout</a>
+    </div>
+  </nav>
+
+  <div class="organiser-bookings-all-container">
+    <h1>📋 All Bookings</h1>
+
+    <% if (!bookings || bookings.length === 0) { %>
+      <p>No bookings made yet.</p>
+    <% } else { %>
+      <table>
+
+        <thead>
+          <tr>
+            <th>Attendee</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Full</th>
+            <th>Concession</th>
+            <th>VIP</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% bookings.forEach(b => { %>
+            <tr>
+              <td><%= b.attendee_name %></td>
+              <td><%= b.event_title %></td>
+              <td><%= b.event_date %></td>
+              <td><%= b.full_qty %></td>
+              <td><%= b.concession_qty %></td>
+              <td><%= b.vip_qty %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+
+      </table>
+    <% } %>
+    
+    <p><a href="/organiser/home">← Back to Dashboard</a></p>
+  </div>
+</body>
+</html>
+<!--END OF OWN CODE-->

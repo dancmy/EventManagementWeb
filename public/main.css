@@ -1,0 +1,1211 @@
+/* Importing Google Font: Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Base Styles */
+body, input, button, textarea, select {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.01em;
+  font-size: 1.04rem;
+  background: #fff;
+}
+
+body.home-bg {
+  background: #fff !important;
+}
+
+.organiser-login-block,
+.home-container {
+  background: linear-gradient(135deg, #f8cdda 0%, #f7f7ff 40%, #a1c4fd 100%);
+}
+
+/* Organiser Login Block Styling - always show gradient border, no hover effect */
+.organiser-login-block {
+  max-width: 350px;
+  margin: 80px auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), border 0.3s;
+  border: 3px solid transparent;
+  position: relative;
+  z-index: 1;
+  /* box-shadow and border create a soft card effect for the login form */
+}
+.organiser-login-block::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 18px;
+  z-index: 0;
+  /* Animated gradient border for login block */
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #ff9a9e);
+  background-size: 400% 400%;
+  animation: gradient-glow 3s linear infinite;
+  pointer-events: none;
+}
+.organiser-login-block > * {
+  position: relative;
+  z-index: 1;
+}
+/* Remove hover effect */
+.organiser-login-block:hover::before {
+  opacity: 1;
+  animation: gradient-glow 3s linear infinite;
+  box-shadow: none;
+}
+.organiser-login-block:hover {
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  border-color: transparent;
+}
+.organiser-login-block h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2d3a4a;
+  font-size: 2rem;
+}
+.organiser-login-block label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #3a4a5a;
+  font-weight: 500;
+}
+.organiser-login-block input[type="text"],
+.organiser-login-block input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #bfc9d1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f7fafd;
+  transition: border 0.2s;
+  display: block;
+}
+.organiser-login-block form {
+  width: 100%;
+}
+.organiser-login-block button {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.7rem;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  margin: 0 auto;
+}
+.organiser-login-block input:focus {
+  border: 1.5px solid #4f8cff;
+  outline: none;
+}
+.organiser-login-block button:hover {
+  background: #2563eb;
+}
+
+/* Home Page Styling */
+.home-container {
+  max-width: 420px;
+  margin: 110px auto 0 auto;
+  padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 55%, #fad0c4 60%, #a18cd1 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(79,140,255,0.07);
+  border: 1.5px solid #e0e7ef;
+  text-align: center;
+  /* Gradient background for home page card */
+}
+.home-container h1 {
+  color: #2563eb;
+  font-size: 2.2rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+.home-container p {
+  color: #3a4a5a;
+  margin-bottom: 1.2rem;
+  font-size: 1.08rem;
+}
+.home-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+}
+.home-container li {
+  margin-bottom: 1.1rem;
+}
+.home-container a {
+  display: inline-block;
+  background: #4f8cff;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 2.2rem;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  box-shadow: 0 1px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.home-container a:hover {
+  background: #2563eb;
+  box-shadow: 0 2px 12px rgba(79,140,255,0.18);
+}
+
+/* Organiser Home Container Styling */
+.organiser-home-container {
+  max-width: 900px;
+  margin: 60px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 32px 0 #ff9a9e30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #fad0c4;
+  position: relative;
+  /* Large card for organiser dashboard, with soft border and shadow */
+}
+.organiser-home-container h1 {
+  color: #2d3a4a;
+  font-size: 2.3rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.organiser-home-container p {
+  color: #3a4a5a;
+  margin-bottom: 1.1rem;
+  font-size: 1.08rem;
+  text-align: center;
+}
+.organiser-home-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+}
+.organiser-home-container li {
+  background: linear-gradient(90deg, #ff9a9e10 0%, #fad0c420 60%, #a18cd120 100%);
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+  border: 1.5px solid #f7c1c1;
+  transition: none;
+}
+.organiser-home-container li:hover {
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+  border: 1.5px solid #f7c1c1;
+  /* No color or shadow change on hover */
+}
+.organiser-home-container strong {
+  color: #2d3a4a;
+  font-size: 1.15rem;
+}
+.organiser-home-container small {
+  color: #6b7280;
+}
+.organiser-home-container button, .organiser-home-container a {
+  display: inline-block;
+  background: #4f8cff;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 7px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  box-shadow: 0 1px 6px rgba(79,140,255,0.08);
+  border: none;
+  margin: 0.2rem 0.3rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.organiser-home-container button:hover, .organiser-home-container a:hover {
+  background: #2563eb;
+  box-shadow: 0 2px 12px rgba(79,140,255,0.18);
+}
+
+/* Custom Modal Popup for Delete Confirmation */
+#deleteModal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(44, 44, 62, 0.25);
+  align-items: center;
+  justify-content: center;
+  /* Modal overlay for delete confirmation, covers entire viewport */
+}
+#deleteModal.active {
+  display: flex;
+  /* Flex display to center modal content when active */
+}
+#deleteModal .modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 #ff9a9e40, 0 2px 16px rgba(0,0,0,0.10);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+  /* Modal content box with shadow and rounded corners */
+}
+#deleteModal h2 {
+  margin-bottom: 1.2rem;
+  color: #2d3a4a;
+  font-size: 1.5rem;
+}
+#deleteModal .modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  /* Flexbox for modal action buttons, spaced evenly */
+}
+#deleteModal button {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#deleteModal button.cancel {
+  background: #e0e0e0;
+  color: #2d3a4a;
+}
+#deleteModal button:hover:not(.cancel) {
+  background: #2563eb;
+}
+
+/* Organiser Create Container Styling */
+.organiser-create-container {
+  max-width: 520px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #ff9a9e30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #fad0c4;
+  position: relative;
+}
+.organiser-create-container h1 {
+  color: #2d3a4a;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.organiser-create-container form {
+  margin-top: 1.2rem;
+}
+.organiser-create-container label,
+.organiser-create-container h3 {
+  color: #3a4a5a;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.organiser-create-container input[type="text"],
+.organiser-create-container input[type="number"],
+.organiser-create-container input[type="date"],
+.organiser-create-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #bfc9d1;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f7fafd;
+  transition: border 0.2s;
+}
+.organiser-create-container input:focus,
+.organiser-create-container textarea:focus {
+  border: 1.5px solid #4f8cff;
+  outline: none;
+}
+.organiser-create-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.7rem;
+}
+.organiser-create-container button:hover {
+  background: #2563eb;
+}
+.organiser-create-container p a {
+  color: #4f8cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.organiser-create-container p a:hover {
+  color: #2563eb;
+}
+
+/* Organiser Navbar Styling */
+.organiser-navbar {
+  width: 100%;
+  max-width: 100vw;
+  background: #fff;
+  box-shadow: 0 2px 12px 0 #ff9a9e20, 0 1px 4px rgba(0,0,0,0.04);
+  padding: 1.1rem 2vw 1.1rem 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  border-bottom: 1.5px solid #fad0c4;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.organiser-navbar .left a {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #4f8cff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.organiser-navbar .right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.organiser-navbar .right a {
+  margin-left: 0.7rem;
+  color: #2d3a4a;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1.01rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+  padding: 0.2rem 0.5rem;
+}
+.organiser-navbar .right a:hover {
+  color: #4f8cff;
+  text-decoration: underline;
+}
+@media (max-width: 700px) {
+  .organiser-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.7rem 2vw 0.7rem 2vw;
+  }
+  .organiser-navbar .right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .organiser-navbar .right a {
+    margin-left: 0;
+    font-size: 0.98rem;
+    padding: 0.2rem 0.3rem;
+  }
+}
+
+/* Organiser Settings Container Styling */
+.organiser-settings-container {
+  max-width: 520px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #ff9a9e30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #fad0c4;
+  position: relative;
+}
+.organiser-settings-container h1 {
+  color: #2d3a4a;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.organiser-settings-container form {
+  margin-top: 1.2rem;
+}
+.organiser-settings-container label,
+.organiser-settings-container p {
+  color: #3a4a5a;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.organiser-settings-container input[type="text"],
+.organiser-settings-container textarea,
+.organiser-settings-container select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #bfc9d1;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f7fafd;
+  transition: border 0.2s;
+}
+.organiser-settings-container input:focus,
+.organiser-settings-container textarea:focus,
+.organiser-settings-container select:focus {
+  border: 1.5px solid #4f8cff;
+  outline: none;
+}
+.organiser-settings-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.7rem;
+}
+.organiser-settings-container button:hover {
+  background: #2563eb;
+}
+.organiser-settings-container p a {
+  color: #4f8cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.organiser-settings-container p a:hover {
+  color: #2563eb;
+}
+
+/* Organiser Bookings All Container Styling */
+.organiser-bookings-all-container {
+  max-width: 900px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #ff9a9e30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #fad0c4;
+  position: relative;
+}
+.organiser-bookings-all-container h1 {
+  color: #2d3a4a;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.organiser-bookings-all-container table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1.5rem;
+  background: #f7fafd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+}
+.organiser-bookings-all-container th, .organiser-bookings-all-container td {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e7ef;
+}
+.organiser-bookings-all-container th {
+  background: #f8cdda;
+  color: #2d3a4a;
+  font-weight: 700;
+}
+.organiser-bookings-all-container tr:last-child td {
+  border-bottom: none;
+}
+.organiser-bookings-all-container p a {
+  color: #4f8cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.organiser-bookings-all-container p a:hover {
+  color: #2563eb;
+}
+
+/* Organiser Bookings Container Styling (match bookings-all) */
+.organiser-bookings-container {
+  max-width: 900px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #ff9a9e30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #fad0c4;
+  position: relative;
+}
+.organiser-bookings-container h1 {
+  color: #2d3a4a;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.organiser-bookings-container table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1.5rem;
+  background: #f7fafd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+}
+.organiser-bookings-container th, .organiser-bookings-container td {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e7ef;
+}
+.organiser-bookings-container th {
+  background: #f8cdda;
+  color: #2d3a4a;
+  font-weight: 700;
+}
+.organiser-bookings-container tr:last-child td {
+  border-bottom: none;
+}
+.organiser-bookings-container p a {
+  color: #4f8cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.organiser-bookings-container p a:hover {
+  color: #2563eb;
+}
+
+/* Attendee Home Container Styling */
+.attendee-home-container {
+  max-width: 900px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #a1c4fd30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #a1c4fd;
+  position: relative;
+}
+.attendee-home-container h1 {
+  color: #2563eb;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.attendee-home-container h2 {
+  color: #4f8cff;
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.attendee-home-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+}
+.attendee-home-container li {
+  background: linear-gradient(90deg, #a1c4fd10 0%, #f7fafd 100%);
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+  border: 1.5px solid #a1c4fd33;
+  transition: none;
+}
+.attendee-home-container li:hover {
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+  border: 1.5px solid #a1c4fd33;
+  /* No color or shadow change on hover */
+}
+.attendee-home-container strong {
+  color: #2d3a4a;
+  font-size: 1.15rem;
+}
+.attendee-home-container small {
+  color: #6b7280;
+}
+.attendee-home-container a {
+  display: inline-block;
+  background: #4f8cff;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 7px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  box-shadow: 0 1px 6px rgba(79,140,255,0.08);
+  border: none;
+  margin: 0.2rem 0.3rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.attendee-home-container a:hover {
+  background: #2563eb;
+  box-shadow: 0 2px 12px rgba(79,140,255,0.18);
+}
+
+/* Attendee Event Container Styling */
+.attendee-event-container {
+  max-width: 600px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #a1c4fd30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #a1c4fd;
+  position: relative;
+}
+.attendee-event-container h1 {
+  color: #2563eb;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.attendee-event-container h2 {
+  color: #4f8cff;
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.attendee-event-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 0 0;
+}
+.attendee-event-container li {
+  margin-bottom: 0.7rem;
+  color: #3a4a5a;
+}
+.attendee-event-container form {
+  margin-top: 1.5rem;
+}
+.attendee-event-container input[type="text"],
+.attendee-event-container input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #bfc9d1;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f7fafd;
+  transition: border 0.2s;
+}
+.attendee-event-container input:focus {
+  border: 1.5px solid #4f8cff;
+  outline: none;
+}
+.attendee-event-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.7rem;
+}
+.attendee-event-container button:hover {
+  background: #2563eb;
+}
+.attendee-event-container p a {
+  color: #4f8cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.attendee-event-container p a:hover {
+  color: #2563eb;
+}
+
+/* Organiser Edit Container Styling */
+.organiser-edit-container {
+  max-width: 520px;
+  margin: 70px auto 0 auto;
+  padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 0 #ff9a9e30, 0 2px 16px rgba(0,0,0,0.08);
+  border: 2.5px solid #fad0c4;
+  position: relative;
+}
+.organiser-edit-container h1 {
+  color: #2d3a4a;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.organiser-edit-container form {
+  margin-top: 1.2rem;
+}
+.organiser-edit-container label,
+.organiser-edit-container h3 {
+  color: #3a4a5a;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.organiser-edit-container input[type="text"],
+.organiser-edit-container input[type="number"],
+.organiser-edit-container input[type="date"],
+.organiser-edit-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #bfc9d1;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f7fafd;
+  transition: border 0.2s;
+}
+.organiser-edit-container input:focus,
+.organiser-edit-container textarea:focus {
+  border: 1.5px solid #4f8cff;
+  outline: none;
+}
+.organiser-edit-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.7rem;
+}
+.organiser-edit-container button:hover {
+  background: #2563eb;
+}
+.organiser-edit-container p a {
+  color: #4f8cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.organiser-edit-container p a:hover {
+  color: #2563eb;
+}
+
+/* Animated Gradient Hover for Organiser Event Box */
+.organiser-event-box {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  border: 2.5px solid #fad0c4;
+  margin-bottom: 2.2rem;
+  padding: 2.1rem 2.2rem 1.5rem 2.2rem;
+  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), border 0.3s;
+  z-index: 1;
+}
+.organiser-event-box::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 18px;
+  z-index: -1;
+  /* Animated gradient border for event cards on hover */
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #ff9a9e);
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.organiser-event-box:hover::before {
+  opacity: 1;
+  animation: gradient-glow 1.5s linear infinite;
+  box-shadow: 0 0 32px 8px #ff9a9e99, 0 0 64px 16px #a18cd199;
+}
+.organiser-event-box > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes gradient-glow {
+  /* Keyframes for animated gradient border effect */
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Animated Gradient Hover for Attendee Event Box */
+.attendee-event-box {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  border: 2.5px solid #a1c4fd;
+  margin-bottom: 2.2rem;
+  padding: 2.1rem 2.2rem 1.5rem 2.2rem;
+  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), border 0.3s;
+  z-index: 1;
+}
+.attendee-event-box::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 18px;
+  z-index: -1;
+  /* Animated gradient border for event cards on hover */
+  background: linear-gradient(270deg, #a1c4fd, #fad0c4, #ff9a9e, #a1c4fd);
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.attendee-event-box:hover::before {
+  opacity: 1;
+  animation: gradient-glow 1.5s linear infinite;
+  box-shadow: 0 0 32px 8px #a1c4fd99, 0 0 64px 16px #ff9a9e99;
+}
+.attendee-event-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove hover effect from ticket list items inside event boxes */
+.organiser-event-box ul li,
+.attendee-event-box ul li {
+  background: linear-gradient(90deg, #ff9a9e10 0%, #fad0c420 60%, #a18cd120 100%);
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+  border: 1.5px solid #f7c1c1;
+  transition: none;
+}
+.organiser-event-box ul li:hover,
+.attendee-event-box ul li:hover {
+  box-shadow: 0 1px 8px rgba(161,140,209,0.07);
+  border: 1.5px solid #f7c1c1;
+  /* No color or shadow change on hover */
+}
+
+/* Remove custom gradient and glowing styles for .remove-btn and .book-now-btn, revert to default blue button */
+.remove-btn, .book-now-btn {
+  position: relative;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 1;
+  overflow: hidden;
+  width: auto;
+  box-shadow: 0 1px 6px rgba(79,140,255,0.08);
+}
+.remove-btn:hover, .book-now-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(79,140,255,0.18);
+}
+
+/* Default Blue Button for Remove */
+.remove-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 1;
+  overflow: hidden;
+}
+.remove-btn:hover {
+  background: #2563eb;
+}
+
+/* Default Blue Button for Book Now */
+.book-now-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.8rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 1;
+  overflow: hidden;
+}
+.book-now-btn:hover {
+  background: #2563eb;
+}
+
+/* Custom Modal Popup for Login Error */
+.custom-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(44, 44, 62, 0.25);
+  align-items: center;
+  justify-content: center;
+  /* Overlay for login error modal, similar to other modals */
+}
+.custom-modal.active {
+  display: flex;
+  /* Flex display to center modal content when active */
+}
+.custom-modal .modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 #ff9a9e40, 0 2px 16px rgba(0,0,0,0.10);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+  /* Modal content box for login error */
+}
+.custom-modal h2 {
+  margin-bottom: 1.2rem;
+  color: #e53935;
+  font-size: 1.5rem;
+  /* Red heading for error emphasis */
+}
+.custom-modal p {
+  color: #3a4a5a;
+  margin-bottom: 1.2rem;
+  font-size: 1.08rem;
+}
+.custom-modal button {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.custom-modal button:hover {
+  background: #2563eb;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44,44,62,0.25);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 #ff9a9e40, 0 2px 16px rgba(0,0,0,0.10);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+/* Modal Content (Blue) for attendee-event.ejs */
+.modal-content-blue {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 #a1c4fd40, 0 2px 16px rgba(0,0,0,0.10);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+/* Modal Actions */
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  /* Flexbox for modal action buttons, spaced evenly */
+}
+
+/* Modal Buttons */
+.modal-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-btn-cancel {
+  background: #e0e0e0;
+  color: #2d3a4a;
+}
+
+/* Modal Heading */
+.modal-content h2 {
+  margin-bottom: 1.2rem;
+  color: #2d3a4a;
+  font-size: 1.5rem;
+}
+.modal-content-blue h2 {
+  color: #2563eb;
+}
+
+/* Important: Advanced CSS Sections */
+
+/* Modal Overlay
+--------------------------------------------------
+Reusable overlay for all modals, covers viewport and centers content
+-------------------------------------------------- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44,44,62,0.25);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content
+--------------------------------------------------
+Standardized content box for modals, with shadow and rounded corners
+-------------------------------------------------- */
+.modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 #ff9a9e40, 0 2px 16px rgba(0,0,0,0.10);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+/* Modal Content (Blue) for attendee-event.ejs
+--------------------------------------------------
+Blue variant of the modal content box, matches event theme
+-------------------------------------------------- */
+.modal-content-blue {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 #a1c4fd40, 0 2px 16px rgba(0,0,0,0.10);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+/* Modal Actions
+--------------------------------------------------
+Flexbox container for modal action buttons, spaced evenly
+-------------------------------------------------- */
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+/* Modal Buttons
+--------------------------------------------------
+Standardized button style for modals
+-------------------------------------------------- */
+.modal-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-btn-cancel {
+  background: #e0e0e0;
+  color: #2d3a4a;
+}
+
+/* Sticky Home Button */
+.sticky-home-btn {
+  position: fixed;
+  left: 24px;
+  bottom: 36px; /* Add margin from bottom */
+  z-index: 1000;
+  background: transparent;
+  color: #4f8cff;
+  padding: 0.75em 1.5em;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: 2.5px solid #4f8cff;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  overflow: hidden;
+}
+.sticky-home-btn::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 33px;
+  z-index: -1;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #ff9a9e);
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.sticky-home-btn:hover::before {
+  opacity: 1;
+  animation: gradient-glow 1.5s linear infinite;
+}
+.sticky-home-btn:hover {
+  color: #fff;
+  border-color: #fad0c4;
+  box-shadow: 0 4px 16px rgba(248,205,218,0.15);
+  background: transparent;
+}
