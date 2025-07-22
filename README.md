@@ -36,6 +36,3 @@
 - Do **not** include the `database.db` file in your submission. It will be generated from `db_schema.sql`.
 
 ---
-
-For any further details, see your coursework instructions.
-
